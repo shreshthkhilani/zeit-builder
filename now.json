@@ -1,4 +1,12 @@
 {
-  "name": "zeit-builder",
-  "version": 2
+    "version": 2,
+    "name": "zeit-builder",
+    "builds": [
+        { "src": "www/package.json", "use": "@now/next" },
+        { "src": "api/node/*.js", "use": "@now/node" }
+    ],
+    "routes": [
+        { "src": "/api/(.*)", "dest": "/api/$1" },
+        { "src": "/(.*)", "dest": "/www/$1" }
+    ]
 }
